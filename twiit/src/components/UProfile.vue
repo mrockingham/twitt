@@ -8,12 +8,18 @@
         <strong>Followers: </strong> {{followers}}
         </div>
     </div>
+    <div class="profile-twiits-box">
+        <TwiitItem v-for="twiit in user.twiits" :key="twiit.id" :username="user.username" :twiit="twiit"/>
+    </div>
+
 </div>
 </template>
 
 <script>
+import TwiitItem from "./TwiitItem"
 export default {
     name:'UProfile',
+    components: {TwiitItem},
     data(){
         return{
             followers: 0,
@@ -23,7 +29,11 @@ export default {
                 firstName: 'Michael',
                 lastName:'Rock',
                 email:'mike@mike.com',
-                isAdmin: true
+                isAdmin: true,
+                twiits:[
+                    {id: 1, content: 'The new twiiit'},
+                    {id: 2, content: 'You are going to love this'},
+                ]
             }
         }
     },
